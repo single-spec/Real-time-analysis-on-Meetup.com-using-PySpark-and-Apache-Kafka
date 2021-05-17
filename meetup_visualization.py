@@ -1,13 +1,13 @@
-import json
-from pyspark.sql import SQLContext
-sqlContext = SQLContext(sc)
-import pandas as pd
-import pandas
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 import os
 import glob
+import json
+from pyspark.sql import SQLContext
+sqlContext = SQLContext(sc)
+import pandas as pd
+import pandas
 mydir="C:\Users\Sonal Ingle\output*"
 
 #Running the program continuously
@@ -17,11 +17,11 @@ while(True):
     output_files.sort(key=os.path.getmtime,reverse=True)
     
     #Reading the most rececntly modified file while plotting 
-    myrdd1 = sc.wholeTextFiles('file:'+output_files[0])
+    output_rdd1 = sc.wholeTextFiles('file:'+output_files[0])
     print('file:'+output_files[0])
     
     #Converting to spark DataFrame
-    dataDF=myrdd1.toDF()
+    dataDF=output_rdd1.toDF()
     dataDF=dataDF.toPandas()
     dataDF.columns=["filename","cities"]
     
