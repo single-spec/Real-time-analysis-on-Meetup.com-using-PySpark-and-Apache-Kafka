@@ -7,14 +7,14 @@ from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
 
-f_count = 0;
+count = 0;
 
 # Function to aggregate the city counts to the alreaddy existing value 
-def city_count(newValue, oldValue):
-    if oldValue is None:
-        oldValue = 0
+def city_count(Value1, Value2):
+    if Value1 is None:
+        Value1 = 0
 
-    return sum(newValue)+oldValue
+    return sum(Value2)+Value1
 
 if __name__ == "__main__":
 
@@ -46,6 +46,6 @@ if __name__ == "__main__":
                                 
     #Storing the output files in a local file system to get the visualization done.
     city_count.saveAsTextFiles('file:C:\Users\Sonal Ingle\output*')
-    #rs.pprint()
+    
     ssc.start()
 ssc.awaitTermination()
