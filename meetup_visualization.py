@@ -10,7 +10,7 @@ import pandas as pd
 import pandas
 mydir="C:\Users\Sonal Ingle\output*"
 
-#Running the program continuously
+#Running the program untill we get the data stream
 while(True):
 #  mydir="file:C:\Users\Sonal Ingle\output*"
     output_files = [file for file in glob.glob(os.path.join(mydir, 'part-*'))]
